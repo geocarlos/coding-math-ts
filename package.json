@@ -1,0 +1,12 @@
+{
+  "name": "codingmath",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "new-episode": "node ./template/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
