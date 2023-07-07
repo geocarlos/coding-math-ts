@@ -1,6 +1,6 @@
 class Vector2D {
-    private _x = 1;
-    private _y = 0;
+    private _x: number;
+    private _y: number;
 
     constructor(x: number, y: number) {
         this._x = x;
@@ -24,36 +24,31 @@ class Vector2D {
     }
 
     set angle(angle: number) {
-        console.log('This length:', this.length);
-        this._x = Math.cos(angle) * this.length;
-        this._y = Math.sin(angle) * this.length;
-        console.log('x', this.x, 'y', this.y);
-        console.log('Angle:', Math.atan2(this.y, this.x));
+        const length = this.length;
+        this._x = Math.cos(angle) * length;
+        this._y = Math.sin(angle) * length;
     }
 
     get angle() {
-        console.log('x', this.x, 'y', this.y);
         return Math.atan2(this._y, this._x);
     }
 
     set length(length: number) {
-        this._x = Math.cos(this.angle) * length;
-        this._y = Math.sin(this.angle) * length;
-        console.log('x', this.x, 'y', this.y);
-        console.log('Angle:', Math.atan2(this.y, this.x));
+        const angle = this.angle;
+        this._x = Math.cos(angle) * length;
+        this._y = Math.sin(angle) * length;
     }
 
     get length() {
-        console.log('x', this.x, 'y', this.y);
         return Math.sqrt(this.x ** 2 + this.y ** 2);
     }
 
-    add(v2: Vector2D) {
-        return new Vector2D(this.x + v2.x, this.y + v2.y);
+    add(vector: Vector2D) {
+        return new Vector2D(this.x + vector.x, this.y + vector.y);
     }
 
-    subtract(v2: Vector2D) {
-        return new Vector2D(this.x - v2.x, this.y - v2.y);
+    subtract(vector: Vector2D) {
+        return new Vector2D(this.x - vector.x, this.y - vector.y);
     }
 
     multiply(scalar: number) {
@@ -64,14 +59,14 @@ class Vector2D {
         return new Vector2D(this.x / scalar, this.y / scalar);
     }
 
-    addTo(v2: Vector2D) {
-        this._x += v2.x;
-        this._y += v2.y;
+    addTo(vector: Vector2D) {
+        this._x += vector.x;
+        this._y += vector.y;
     }
 
-    subtractFrom(v2: Vector2D) {
-        this._x -= v2.x;
-        this._y -= v2.y;
+    subtractFrom(vector: Vector2D) {
+        this._x -= vector.x;
+        this._y -= vector.y;
     }
 
     multiplyBy(scalar: number) {
