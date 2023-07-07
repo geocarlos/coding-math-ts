@@ -1,5 +1,5 @@
 class Vector2D {
-    private _x = 0;
+    private _x = 1;
     private _y = 0;
 
     constructor(x: number, y: number) {
@@ -24,20 +24,27 @@ class Vector2D {
     }
 
     set angle(angle: number) {
+        console.log('This length:', this.length);
         this._x = Math.cos(angle) * this.length;
         this._y = Math.sin(angle) * this.length;
+        console.log('x', this.x, 'y', this.y);
+        console.log('Angle:', Math.atan2(this.y, this.x));
     }
 
     get angle() {
-        return Math.atan2(this.y, this.x);
+        console.log('x', this.x, 'y', this.y);
+        return Math.atan2(this._y, this._x);
     }
 
     set length(length: number) {
         this._x = Math.cos(this.angle) * length;
         this._y = Math.sin(this.angle) * length;
+        console.log('x', this.x, 'y', this.y);
+        console.log('Angle:', Math.atan2(this.y, this.x));
     }
 
     get length() {
+        console.log('x', this.x, 'y', this.y);
         return Math.sqrt(this.x ** 2 + this.y ** 2);
     }
 
