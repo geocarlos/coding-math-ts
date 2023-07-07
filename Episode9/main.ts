@@ -8,7 +8,7 @@ window.onload = function () {
     const height = canvas.height = window.document.body.clientHeight;
     const acceleration = new Vector2D(0.1, 0.1);
 
-    const particle = new Particle(100, height, 10, -Math.PI / 2);
+    const particle = new Particle(100, height, 10, -Math.PI / 2, 0.1);
 
     render();
 
