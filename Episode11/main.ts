@@ -1,5 +1,4 @@
 import Particle from "./Particle.js";
-import Vector2D from "./Vector2D.js";
 
 window.onload = function () {
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
