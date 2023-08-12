@@ -3,8 +3,8 @@ import Particle from "./Particle.js";
 window.onload = function () {
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     const context = canvas.getContext("2d") as CanvasRenderingContext2D;
-    const width = canvas.width = window.document.body.clientWidth;
-    const height = canvas.height = window.document.body.clientHeight;
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
 
     const particles: Particle[] = [];
     const numParticles = 100;
