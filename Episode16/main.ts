@@ -1,15 +1,19 @@
 import Particle from "./Particle";
 import Vector2D from "./Vector2D";
+import { spring2 } from "./spring2";
 
-window.onload = function () {
+const isSpring2 = window.location.pathname.includes('spring2');
+
+const spring1 = function () {
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     const context = canvas.getContext("2d")!;
     const width = canvas.width = window.innerWidth;
     const height = canvas.height = window.innerHeight;
 
     const springPoint = new Vector2D(width / 2, height / 2);
-    const weight = new Particle(Math.random() * width, Math.random() * height, 50, Math.random() * Math.PI * 2);
-    const k = 0.1 + Math.random() * .5;
+    const weight = new Particle(Math.random() * width, Math.random() * height, 50, Math.random() * Math.PI * 2, 0.5);
+    const k = 0.1;
+    const springLength = 100;
 
     weight.radius = 20;
     weight.friction = 0.5 + Math.random() * .5;
@@ -26,6 +30,7 @@ window.onload = function () {
         context.clearRect(0, 0, width, height);
 
         const distance = springPoint.subtract(weight.position);
+        distance.length -= springLength;
         const springForce = distance.multiply(k);
 
         weight.velocity.addTo(springForce);
@@ -51,3 +56,5 @@ window.onload = function () {
     }
 
 };
+
+window.onload = () => isSpring2 ? spring2() : spring1();
